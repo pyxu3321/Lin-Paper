@@ -1,5 +1,6 @@
 import base64
 from core.llm_client import LLMClient
+from config.prompts import VISION_EXTRACT_PROMPT
 from tools.latex_tool import latex_format_cleaner
 
 def encode_image(image_path: str) -> str:
@@ -17,14 +18,8 @@ def vision_extract_latex(image_path: str) -> str:
         client = LLMClient()
         base64_image = encode_image(image_path)
         
-        prompt = """请识别这张图片中的数学公式或题目内容。
-如果是数学公式，请使用 LaTeX 格式输出。
-如果是文字题目，请完整输出题目内容。
-只输出识别结果，不要添加其他说明。"""
+        result = client.chat_with_image(VISION_EXTRACT_PROMPT, base64_image)
         
-        result = client.chat_with_image(prompt, base64_image)
-        
-        # 自动清洗大模型返回的含有杂质的 LaTeX
         cleaned_result = latex_format_cleaner(result)
         return cleaned_result
     except Exception as e:
