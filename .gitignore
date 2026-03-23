@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment variables (包含敏感信息，绝不上传)
+.env
+
+# Project specific
+workspace/uploads/
+workspace/outputs/
+workspace/temp/
+storage/
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated files
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
